@@ -82,7 +82,7 @@ class UCR(TSADBaseDataset):
         # Download the compressed dataset
         if not os.path.exists(compressed_file):
             logger.info("Downloading " + url)
-            with requests.get(url, stream=True) as r:
+            with requests.get(url, stream=True, timeout=60) as r:
                 with open(compressed_file, "wb") as f:
                     for chunk in r.iter_content(chunk_size=16 * 1024 ** 2):
                         if chunk:  # filter out keep-alive new chunks
