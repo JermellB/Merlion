@@ -67,9 +67,9 @@ class ModelConfigMeta(type):
 
                 # Parse the __init__ docstring. Use the earliest prefix/param docstring in the MRO.
                 prefix_, suffix_, params_ = parse_basic_docstring(cls_.__init__.__doc__)
-                if prefix is None and any([line != "" for line in prefix_]):
+                if prefix is None and any(line != "" for line in prefix_):
                     prefix = "\n".join(prefix_)
-                if suffix is None and any([line != "" for line in suffix_]):
+                if suffix is None and any(line != "" for line in suffix_):
                     suffix = "\n".join(suffix_)
                 for param, docstring_lines in params_.items():
                     if param not in params:

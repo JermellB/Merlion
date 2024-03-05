@@ -140,10 +140,10 @@ def data_io_decorator(func):
 
     # Combine the prefixes. Base prefix starts after the first line break.
     i_lb = [i for i, line in enumerate(base_prefix) if line == ""][1]
-    prefix = ("\n".join(prefix) if any([line != "" for line in prefix]) else "") + "\n".join(base_prefix[i_lb:])
+    prefix = ("\n".join(prefix) if any(line != "" for line in prefix) else "") + "\n".join(base_prefix[i_lb:])
 
     # The base docstring has no suffix, so just use the function's
-    suffix = "\n".join(suffix) if any([line != "" for line in suffix]) else ""
+    suffix = "\n".join(suffix) if any(line != "" for line in suffix) else ""
 
     # Combine the parameter lists
     for param, docstring_lines in base_params.items():

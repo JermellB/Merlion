@@ -40,7 +40,7 @@ class EnergyPower(BaseDataset):
         dsetdirs = [rootdir]
         extension = "csv.gz"
 
-        fnames = sum([sorted(glob.glob(f"{d}/*.{extension}")) for d in dsetdirs], [])
+        fnames = sum(sorted(glob.glob(f"{d}/*.{extension}")) for d in dsetdirs)
         assert len(fnames) == 1, f"rootdir {rootdir} does not contain dataset file."
 
         start_timestamp = "2014-01-01 00:00:00"

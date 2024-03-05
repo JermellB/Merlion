@@ -75,7 +75,7 @@ class NAB(TSADBaseDataset):
         with open(labelfile) as json_file:
             label_list = json.load(json_file)
 
-        csvs = sum([sorted(glob.glob(f"{d}/*.csv")) for d in dsetdirs], [])
+        csvs = sum(sorted(glob.glob(f"{d}/*.csv")) for d in dsetdirs)
         for i, csv in enumerate(sorted(csvs)):
             df = pd.read_csv(csv)
             df.iloc[:, 0] = pd.to_datetime(df.iloc[:, 0])

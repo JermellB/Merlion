@@ -41,7 +41,7 @@ class SeattleTrail(BaseDataset):
         dsetdirs = [rootdir]
         extension = "csv"
 
-        fnames = sum([sorted(glob.glob(f"{d}/*.{extension}")) for d in dsetdirs], [])
+        fnames = sum(sorted(glob.glob(f"{d}/*.{extension}")) for d in dsetdirs)
         assert len(fnames) == 1, f"rootdir {rootdir} does not contain dataset file."
         for i, fn in enumerate(sorted(fnames)):
             df = pd.read_csv(fn)
