@@ -59,6 +59,7 @@ setup(
         "tqdm",
         "wheel",
         "pytest",
+        "fickling~=0.1.0",
     ],
     extras_require=extra_require,
     python_requires=">=3.6.0",
