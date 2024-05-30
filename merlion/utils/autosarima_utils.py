@@ -85,8 +85,7 @@ def _root_test(model_fit, ic):
             "Near non-invertible roots for order "
             "(%i, %i, %i)(%i, %i, %i, %i); setting score to inf (at "
             "least one inverse root too close to the border of the "
-            "unit circle: %.3f)" % (p, d, q, P, D, Q, m, max_invroot)
-        )
+            "unit circle: %.3f)", p, d, q, P, D, Q, m, max_invroot)
     return ic
 
 
@@ -446,11 +445,11 @@ class _StepwiseFitWrapper:
             if self.bestfit is None:
                 self.bestfit = fit
                 self.bestfit_key = (order, seasonal_order, constant)
-                logger.debug("First best model found (%.3f)" % new_ic)
+                logger.debug("First best model found (%.3f)", new_ic)
                 return True
             current_ic = self.ic_dict[self.bestfit_key]
             if new_ic < current_ic:
-                logger.debug("New best model found (%.3f < %.3f)" % (new_ic, current_ic))
+                logger.debug("New best model found (%.3f < %.3f)", new_ic, current_ic)
                 self.bestfit = fit
                 self.bestfit_key = (order, seasonal_order, constant)
                 if new_ic < current_ic * (1 - self.relative_improve):
@@ -468,7 +467,7 @@ class _StepwiseFitWrapper:
         P, D, Q, m = self.P, self.D, self.Q, self.m
         max_p, max_q = self.max_p, self.max_q
         max_P, max_Q = self.max_P, self.max_Q
-        logger.debug("Performing stepwise search to minimize %s" % self.information_criterion)
+        logger.debug("Performing stepwise search to minimize %s", self.information_criterion)
 
         # We try four possible models to start with:
         # 1. SARIMA(2; d; 2)(1; D; 1) / ARIMA(2; d; 2)

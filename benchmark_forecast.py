@@ -280,7 +280,7 @@ def train_model(
         # Get all the horizon conditions we want to evaluate from metadata
         if any("condition" in k and isinstance(v, list) for k, v in md.items()):
             conditions = sum([v for k, v in md.items() if "condition" in k and isinstance(v, list)], [])
-            logger.debug("\n" + "=" * 80 + "\n" + df.columns[0] + "\n" + "=" * 80 + "\n")
+            logger.debug("\n%s\n%s\n%s\n", "=" * 80, df.columns[0], "=" * 80)
             horizons = set()
             for condition in conditions:
                 horizons.update([v for k, v in condition.items() if "horizon" in k])
