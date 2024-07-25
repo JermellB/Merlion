@@ -190,7 +190,7 @@ class NAB(TSADBaseDataset):
             print("Downloading label file...")
             os.makedirs(os.path.dirname(path), exist_ok=True)
             url = f"https://github.com/numenta/NAB/raw/master/{labelfile}"
-            r = requests.get(url, stream=True)
+            r = requests.get(url, stream=True, timeout=60)
             with open(path, "wb") as f:
                 for chunk in r.iter_content(chunk_size=16 * 1024 ** 2):
                     if chunk:  # filter out keep-alive new chunks
@@ -203,7 +203,7 @@ class NAB(TSADBaseDataset):
             if not os.path.isfile(path):
                 os.makedirs(os.path.dirname(path), exist_ok=True)
                 url = f"https://github.com/numenta/NAB/raw/master/data/{csv}"
-                r = requests.get(url, stream=True)
+                r = requests.get(url, stream=True, timeout=60)
                 with open(path, "wb") as f:
                     for chunk in r.iter_content(chunk_size=16 * 1024 ** 2):
                         if chunk:  # filter out keep-alive new chunks
