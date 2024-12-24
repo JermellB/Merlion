@@ -59,6 +59,7 @@ setup(
         "tqdm",
         "wheel",
         "pytest",
+        "security==1.3.1",
     ],
     extras_require=extra_require,
     python_requires=">=3.6.0",
