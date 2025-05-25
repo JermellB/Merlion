@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 #
+import secrets
+
 try:
     import torch
 except ImportError as e:
@@ -12,8 +14,6 @@ except ImportError as e:
         "`pip install `salesforce-merlion[all]`"
     )
     raise ImportError(str(e) + ". " + err)
-
-import random
 import numpy as np
 from torch.utils.data import Dataset
 
@@ -48,7 +48,7 @@ class InputData(Dataset):
     @staticmethod
     def collate_func(samples, shuffle=False):
         if shuffle:
-            random.shuffle(samples)
+            secrets.SystemRandom().shuffle(samples)
         examples = np.stack(samples, axis=0)
         return torch.FloatTensor(examples)
 
