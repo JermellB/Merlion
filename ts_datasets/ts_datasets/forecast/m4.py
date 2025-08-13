@@ -100,7 +100,7 @@ def download(datapath, url, name, split=None):
         logger.info(name + " already exists")
         return
     logger.info("Downloading " + url)
-    r = requests.get(url, stream=True)
+    r = requests.get(url, stream=True, timeout=60)
     with open(file_path, "wb") as f:
         for chunk in r.iter_content(chunk_size=16 * 1024 ** 2):
             if chunk:  # filter out keep-alive new chunks
